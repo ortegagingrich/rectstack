@@ -4,7 +4,6 @@
 
 #include <jvisu.h>
 
-
 #include "difficulty.h"
 
 
