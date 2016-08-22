@@ -10,7 +10,8 @@ static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";
 Game::Game(Application *app):
 	gameNode(NULL),
 	application(app),
-	stack(this)
+	stack(this),
+	stacker(this)
 {
 	setup();
 }
@@ -35,11 +36,16 @@ void Game::setup(){
 void Game::reset(Difficulty diff){
 	difficulty = diff;
 	stack.reset();
+	
+	stacker.disarm();
+	//TODO: Instead of immediately arming the stacker, have a countdown
+	stacker.arm();
 }
 
 
 
 void Game::end(){
+	stacker.disarm();
 	//TODO: Open Score Report; for now, just end immediately
 	application->startMenu();
 }

@@ -13,6 +13,9 @@ public:
 	Application *application;
 	
 	MainMenu(Application *app);
+	~MainMenu(){
+		delete menuNode;
+	};
 	
 private:
 	

@@ -17,6 +17,8 @@ public:
 	bool pushTop(Rect2f rect, Uint8 r, Uint8 g, Uint8 b);
 	int getHeight();
 	
+	Rect2f getTopRect(){ return topRect; };
+	
 private:
 	Game *game;
 	Node2D *node;
@@ -26,7 +28,6 @@ private:
 	
 	void addLayerSprite(Uint8 r, Uint8 g, Uint8 b);
 };
-
 
 
 #endif

@@ -7,6 +7,7 @@
 #include "difficulty.h"
 #include "menu_button.h"
 #include "stack.h"
+#include "stacker.h"
 
 
 class Application;
@@ -16,10 +17,12 @@ class Game {
 public:
 	Node2D *gameNode;
 	Application *application;
-	
+	Stack stack;
+	Stacker stacker;
 	
 	
 	Game(Application *app);
+	~Game(){ delete gameNode; };
 	
 	void reset(Difficulty diff);
 	void end();
@@ -27,7 +30,6 @@ public:
 	int getScore();
 	
 private:
-	Stack stack;
 	Difficulty difficulty;
 	
 	void setup();
