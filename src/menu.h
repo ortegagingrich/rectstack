@@ -4,6 +4,7 @@
 
 #include <jvisu.h>
 #include "difficulty.h"
+#include "menu_button.h"
 
 
 class MainMenu {
@@ -24,12 +25,6 @@ private:
  * Buttons
  */
 
-class MenuButton : public ComponentButtonSimple2D {
-public:
-	MenuButton(JWindow *win, MainMenu *m);
-protected:
-	MainMenu *menu;
-};
 
 
 class StartButton : public MenuButton {

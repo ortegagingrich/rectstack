@@ -5,6 +5,7 @@
 #include <jvisu.h>
 
 #include "difficulty.h"
+#include "menu_button.h"
 
 
 class Game {
@@ -18,11 +19,24 @@ public:
 	~Game();
 	
 	void reset(Difficulty diff);
+	void end();
 	
 private:
 	Difficulty difficulty;
+	
+	void setup();
 };
 
+
+
+class GameQuitButton : public MenuButton {
+public:
+	Game *game;
+	
+	GameQuitButton(JWindow *win, Game *g);
+	
+	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
+};
 
 
 #endif
