@@ -7,6 +7,7 @@
 #include "application.h"
 #include "game.h"
 #include "menu.h"
+#include "record.h"
 
 
 
@@ -43,7 +44,7 @@ Application::~Application(){
 
 
 void Application::run(){
-	
+	reload_records("save/records.dat");
 	
 	// Main Loop
 	while(active && window->isActive()){
