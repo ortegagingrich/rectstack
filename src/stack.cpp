@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include <jvisu.h>
 #include "application.h"
 #include "game.h"
@@ -14,12 +15,12 @@ Stack::Stack(Game *g):
 }
 
 
-void Stack::addLayerSprite(){
+void Stack::addLayerSprite(Uint8 r, Uint8 g, Uint8 b){
 	
-	Uint8 r, g, b;
-	r = 0x00;
-	g = 0x00;
-	b = 0xff;
+	Node2D *lnode = new Node2D();
+	lnode->zLevel = 0.0001 * stackHeight - 1;
+	node->attachChild(lnode);
+	
 	
 	Texture *texture = Texture::createSolidColor(
 		1,
@@ -31,14 +32,14 @@ void Stack::addLayerSprite(){
 		0xff
 	);
 	
-	
 	ComponentSpriteSimple2D *layer;
 	layer = new ComponentSpriteSimple2D(texture);
 	layer->width = topRect.getWidth();
 	layer->height = topRect.getHeight();
 	layer->position.set(topRect.xMin, topRect.yMax);
 	
-	node->attachChild(layer);
+	lnode->attachChild(layer);
+	
 }
 
 
@@ -47,14 +48,21 @@ void Stack::reset(){
 	node->detachFromParent();
 	game->gameNode->attachChild(node);
 	
-	topRect.set(-0.5f, 0.5f, -0.5f, 0.5f);
+	topRect.set(-0.2f, 0.2f, -0.2f, 0.2f);
 	
 	stackHeight = 1;
-	addLayerSprite();
+	
+	
+	
+	Uint8 r, g, b;
+	r = (Uint8) rand() % 256;
+	g = (Uint8) rand() % 256;
+	b = (Uint8) rand() % 256;
+	addLayerSprite(r, g, b);
 }
 
 
-bool Stack::pushTop(Rect2f rect){
+bool Stack::pushTop(Rect2f rect, Uint8 r, Uint8 g, Uint8 b){
 	/**
 	 * Returns true if rect is successfully pushed onto the stack.
 	 * If there is no intersection (i.e. the game is over), false is returned.
@@ -63,7 +71,7 @@ bool Stack::pushTop(Rect2f rect){
 	if(!calculate_intersection(rect, topRect, topRect)) return false;
 	
 	stackHeight++;
-	addLayerSprite();
+	addLayerSprite(r, g, b);
 	
 	return true;
 }

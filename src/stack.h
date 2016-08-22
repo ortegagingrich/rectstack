@@ -14,7 +14,7 @@ public:
 	Stack(Game *g);
 	
 	void reset();
-	bool pushTop(Rect2f rect);
+	bool pushTop(Rect2f rect, Uint8 r, Uint8 g, Uint8 b);
 	int getHeight();
 	
 private:
@@ -24,7 +24,7 @@ private:
 	
 	int stackHeight;
 	
-	void addLayerSprite();
+	void addLayerSprite(Uint8 r, Uint8 g, Uint8 b);
 };
 
 
