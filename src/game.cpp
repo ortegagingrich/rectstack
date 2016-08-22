@@ -9,15 +9,13 @@ static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";
 
 Game::Game(Application *app):
 	gameNode(NULL),
-	application(app)
+	application(app),
+	stack(this)
 {
 	setup();
 }
 
 
-Game::~Game(){
-	if(gameNode != NULL) delete gameNode;
-}
 
 
 void Game::setup(){
@@ -36,6 +34,7 @@ void Game::setup(){
 
 void Game::reset(Difficulty diff){
 	difficulty = diff;
+	stack.reset();
 }
 
 
@@ -46,6 +45,9 @@ void Game::end(){
 }
 
 
+int Game::getScore(){
+	return stack.getHeight();
+}
 
 
 

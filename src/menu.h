@@ -13,7 +13,6 @@ public:
 	Application *application;
 	
 	MainMenu(Application *app);
-	~MainMenu();
 	
 private:
 	

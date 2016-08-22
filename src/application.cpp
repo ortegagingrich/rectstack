@@ -2,6 +2,7 @@
  * Application Source Code
  */
 
+#include <cstdio>
 #include <jvisu.h>
 #include "application.h"
 #include "game.h"

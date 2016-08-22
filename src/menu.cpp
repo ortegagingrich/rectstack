@@ -15,11 +15,6 @@ MainMenu::MainMenu(Application *app):
 }
 
 
-MainMenu::~MainMenu(){
-	if(menuNode != NULL) delete menuNode;
-}
-
-
 
 void MainMenu::setup(){
 	menuNode = new Node2D();

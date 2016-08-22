@@ -6,6 +6,10 @@
 
 #include "difficulty.h"
 #include "menu_button.h"
+#include "stack.h"
+
+
+class Application;
 
 
 class Game {
@@ -16,12 +20,14 @@ public:
 	
 	
 	Game(Application *app);
-	~Game();
 	
 	void reset(Difficulty diff);
 	void end();
 	
+	int getScore();
+	
 private:
+	Stack stack;
 	Difficulty difficulty;
 	
 	void setup();
