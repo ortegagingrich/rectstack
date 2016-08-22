@@ -3,6 +3,7 @@
 #include <jvisu.h>
 #include "application.h"
 #include "game.h"
+#include "record.h"
 
 
 static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";
@@ -87,8 +88,12 @@ void ScoreSprite::update(Layer2D *layer, float tpf){
 	
 	std::stringstream stream;
 	
-	stream << "Score: " << game->getScore() << "   Record: " << 1;
+	int score = game->getScore();
+	int record = get_record(game->difficulty);
+	stream << "Score: " << score << "   Record: " << record;
 	text = stream.str();
+	
+	if(score > record) put_record(score, game->difficulty);
 	
 	ComponentSpriteText2D::update(layer, tpf);
 }

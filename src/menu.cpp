@@ -1,6 +1,9 @@
+#include <sstream>
+#include <string>
 #include <jvisu.h>
 #include "application.h"
 #include "menu.h"
+#include "record.h"
 
 
 static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";

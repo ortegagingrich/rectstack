@@ -43,7 +43,17 @@ void Stacker::update(float tpf){
 void Stacker::recomputeVelocity(){
 	velocity = -stackerNode->position;
 	velocity.normalize();
-	velocity *= 1.0f; // Change this based on difficulty
+	
+	switch(game->difficulty){
+	case Difficulty::EASY:
+		velocity *= 0.9f;
+		break;
+	case Difficulty::MEDIUM:
+		velocity *= 1.8f;
+		break;
+	case Difficulty::HARD:
+		velocity *= 2.5f;
+	}
 }
 
 

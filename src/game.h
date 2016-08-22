@@ -19,6 +19,7 @@ public:
 	Application *application;
 	Stack stack;
 	Stacker stacker;
+	Difficulty difficulty;
 	
 	
 	Game(Application *app);
@@ -30,7 +31,6 @@ public:
 	int getScore();
 	
 private:
-	Difficulty difficulty;
 	
 	void setup();
 };
