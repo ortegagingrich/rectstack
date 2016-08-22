@@ -36,6 +36,15 @@ private:
 };
 
 
+class ScoreSprite : public ComponentSpriteText2D {
+public:
+	Game *game;
+	
+	ScoreSprite(JWindow *win, Game *g);
+	
+	virtual void update(Layer2D *layer, float tpf);
+};
+
 
 class GameQuitButton : public MenuButton {
 public:

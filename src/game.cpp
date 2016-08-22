@@ -1,3 +1,5 @@
+#include <string>
+#include <sstream>
 #include <jvisu.h>
 #include "application.h"
 #include "game.h"
@@ -21,6 +23,15 @@ Game::Game(Application *app):
 
 void Game::setup(){
 	gameNode = new Node2D();
+	
+	
+	// Score
+	ScoreSprite *scoreSprite = new ScoreSprite(application->window, this);
+	scoreSprite->width = -1;
+	scoreSprite->height = 0.2f;
+	scoreSprite->position.set(-application->window->getAspectRatio(), 1.0f);
+	gameNode->attachChild(scoreSprite);
+	
 	
 	// Quit Button
 	GameQuitButton *quitButton = new GameQuitButton(application->window, this);
@@ -53,6 +64,33 @@ void Game::end(){
 
 int Game::getScore(){
 	return stack.getHeight();
+}
+
+
+
+
+/*
+ * Score Viewer
+ */
+
+ScoreSprite::ScoreSprite(JWindow *win, Game *g):
+	ComponentSpriteText2D(win),
+	game(g)
+{
+	text = "";
+	fontPath = FONT_PATH;
+	fontSize = 64;
+}
+
+
+void ScoreSprite::update(Layer2D *layer, float tpf){
+	
+	std::stringstream stream;
+	
+	stream << "Score: " << game->getScore() << "   Record: " << 1;
+	text = stream.str();
+	
+	ComponentSpriteText2D::update(layer, tpf);
 }
 
 
