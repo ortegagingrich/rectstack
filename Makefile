@@ -56,5 +56,5 @@ test:
 #print number of lines
 .phony: line_count
 line_count:
-	find . -name '*.c' -o -name '*.h' | xargs wc -l
+	find src -name '*.cpp' -o -name '*.h' | xargs wc -l
 
