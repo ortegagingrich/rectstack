@@ -3,17 +3,51 @@
 
 
 #include <jvisu.h>
+#include "difficulty.h"
 
 
 class MainMenu {
 public:
 	Node2D *menuNode;
+	Application *application;
 	
 	MainMenu(Application *app);
 	~MainMenu();
 	
 private:
-	Application *application;
+	
+	void setup();
+};
+
+
+/*
+ * Buttons
+ */
+
+class MenuButton : public ComponentButtonSimple2D {
+public:
+	MenuButton(JWindow *win, MainMenu *m);
+protected:
+	MainMenu *menu;
+};
+
+
+class StartButton : public MenuButton {
+public:
+	StartButton(JWindow *win, MainMenu *m, Difficulty diff);
+	
+	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
+private:
+	Difficulty difficulty;
+};
+
+
+
+class QuitButton : public MenuButton {
+public:
+	QuitButton(JWindow *win, MainMenu *m);
+	
+	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
 };
 
 

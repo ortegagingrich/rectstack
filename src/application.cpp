@@ -15,8 +15,8 @@ Application *Application::createApplication(bool useHardwareRendering){
 
 
 Application::Application(bool useHardwareRendering):
-	active(true),
 	window(NULL),
+	active(true),
 	layer(NULL),
 	game(NULL),
 	menu(NULL),
@@ -49,8 +49,11 @@ void Application::run(){
 		float tpf = window->tick(60);
 		window->update(tpf);
 	}
-	
-	
+}
+
+
+void Application::end(){
+	active = false;
 }
 
 

@@ -10,6 +10,9 @@
 class Game {
 public:
 	Node2D *gameNode;
+	Application *application;
+	
+	
 	
 	Game(Application *app);
 	~Game();
@@ -17,7 +20,6 @@ public:
 	void reset(Difficulty diff);
 	
 private:
-	Application *application;
 	Difficulty difficulty;
 };
 

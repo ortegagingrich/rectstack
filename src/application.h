@@ -6,8 +6,10 @@
 #define RS_APPLICATION_H
 
 
+#include <string>
 #include <jvisu.h>
 #include "difficulty.h"
+
 
 
 class Game;
@@ -17,10 +19,15 @@ class MainMenu;
 class Application {
 public:
 	
+	
+	JWindow *window;
+	
+	
 	static Application *createApplication(bool useHardwareAcceleration);
 	
 	~Application();
 	void run();
+	void end();
 	
 	
 	void startMenu();
@@ -31,7 +38,6 @@ private:
 	
 	bool active;
 	
-	JWindow *window;
 	Layer2D *layer;
 	
 	Game *game;
