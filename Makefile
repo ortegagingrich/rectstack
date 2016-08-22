@@ -6,7 +6,7 @@ LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf
 SRC_FOLDER=src
 BIN_FOLDER=bin
 BUILD_FOLDER=build
-EXE=rectstack
+EXE=exe
 
 C_SOURCES=$(shell find $(SRC_FOLDER) -type f -iname '*.c')
 CPP_SOURCES=$(shell find $(SRC_FOLDER) -type f -iname '*.cpp')
@@ -36,7 +36,7 @@ run: $(EXE)
 build: $(EXE)
 	rm -rf $(BUILD_FOLDER)/rectstack
 	mkdir $(BUILD_FOLDER)/rectstack
-	mv $(EXE) build/rectstack/$(EXE)
+	mv $(EXE) build/rectstack/rectstack
 	cp -r assets $(BUILD_FOLDER)/rectstack/assets
 
 
