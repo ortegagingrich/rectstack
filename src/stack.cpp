@@ -48,7 +48,7 @@ void Stack::reset(){
 	node->detachFromParent();
 	game->gameNode->attachChild(node);
 	
-	topRect.set(-0.2f, 0.2f, -0.2f, 0.2f);
+	topRect.set(-0.4f, 0.4f, -0.4f, 0.4f);
 	
 	stackHeight = 1;
 	

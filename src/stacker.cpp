@@ -30,10 +30,10 @@ void Stacker::update(float tpf){
 	
 	stackerNode->position += tpf * velocity;
 	if(
-		stackerNode->position.x < -1 ||
-		stackerNode->position.y < -1 ||
-		stackerNode->position.x > 1 ||
-		stackerNode->position.y > 1
+		stackerNode->position.x < -2 ||
+		stackerNode->position.y < -2 ||
+		stackerNode->position.x > 2 ||
+		stackerNode->position.y > 2
 	){
 		recomputeVelocity();
 	}
@@ -43,7 +43,7 @@ void Stacker::update(float tpf){
 void Stacker::recomputeVelocity(){
 	velocity = -stackerNode->position;
 	velocity.normalize();
-	velocity *= 0.5f; // Change this based on difficulty
+	velocity *= 1.0f; // Change this based on difficulty
 }
 
 
@@ -72,7 +72,9 @@ void Stacker::arm(){
 	armed = true;
 	
 	//TODO: Add logic for choosing velocity based on difficulty, etc.
-	stackerNode->position.set(0, 1);
+	stackerNode->position.set(0, 1.5);
+	float angle = rand() % 360;
+	stackerNode->position.rotateDegrees(angle);
 	recomputeVelocity();
 	
 	
