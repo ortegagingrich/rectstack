@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -std=c++11 -Ilib/jvisu/include
+CFLAGS=-Wall -std=c++11 -Ilib/jvisu/include -g
 LINK=g++
 LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf
 

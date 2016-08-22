@@ -20,6 +20,8 @@ public:
 	
 	void update(float tpf);
 	
+	void cut();
+	
 	void arm();
 	void disarm();
 	bool isArmed();
@@ -45,6 +47,36 @@ public:
 	virtual void update(Layer2D *layer, float tpf){
 		stacker->update(tpf);
 		ComponentSpriteSimple2D::update(layer, tpf);
+	}
+};
+
+
+class StackerMouseCallback : public MouseButtonCallback {
+public:
+	Stacker *stacker;
+	
+	StackerMouseCallback(Stacker *s):
+		MouseButtonCallback(s->stackerNode),
+		stacker(s)
+	{};
+	
+	virtual void callback(MouseButtonEvent *event, float tpf){
+		if(event->isPressed()) stacker->cut();
+	};
+};
+
+
+class StackerKeyCallback : public KeyButtonCallback {
+public:
+	Stacker *stacker;
+	
+	StackerKeyCallback(Stacker *s):
+		KeyButtonCallback(s->stackerNode),
+		stacker(s)
+	{};
+	
+	virtual void callback(KeyButtonEvent *event, float tpf){
+		if(event->isPressed()) stacker->cut();
 	}
 };
 

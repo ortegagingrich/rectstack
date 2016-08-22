@@ -68,7 +68,9 @@ bool Stack::pushTop(Rect2f rect, Uint8 r, Uint8 g, Uint8 b){
 	 * If there is no intersection (i.e. the game is over), false is returned.
 	 */
 	
-	if(!calculate_intersection(rect, topRect, topRect)) return false;
+	Rect2f newTopRect;
+	if(!calculate_intersection(rect, topRect, newTopRect)) return false;
+	topRect = newTopRect;
 	
 	stackHeight++;
 	addLayerSprite(r, g, b);

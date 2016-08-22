@@ -1,5 +1,7 @@
+#include <cstdio>
 #include <jvisu.h>
 #include "application.h"
+#include "difficulty.h"
 #include "game.h"
 #include "stacker.h"
 
@@ -13,6 +15,9 @@ Stacker::Stacker(Game *g):
 	stackerNode = new Node2D();
 	stackerSprite = new StackerSprite(this);
 	stackerNode->attachChild(stackerSprite);
+	
+	new StackerMouseCallback(this);
+	new StackerKeyCallback(this);
 }
 
 Stacker::~Stacker(){
@@ -37,6 +42,27 @@ void Stacker::recomputeVelocity(){
 	velocity = -stackerNode->position;
 	velocity.normalize();
 	velocity *= 2; // Change this based on difficulty
+}
+
+
+void Stacker::cut(){
+	// Only cut if active
+	if(!armed) return;
+	
+	// Compute the rectangle with which to intersect the stack
+	Rect2f rect;
+	rect.xMin = stackerNode->position.x + stackerSprite->position.x;
+	rect.yMax = stackerNode->position.y + stackerSprite->position.y;
+	rect.xMax = rect.xMin + stackerSprite->width;
+	rect.yMin = rect.yMax - stackerSprite->height;
+	
+	
+	if(!game->stack.pushTop(rect, r, g, b)){
+		game->end();
+	}else{
+		disarm();
+		arm();
+	}
 }
 
 
@@ -78,7 +104,7 @@ void Stacker::arm(){
 void Stacker::disarm(){
 	armed = false;
 	
-	game->gameNode->detachChild(stackerNode);
+	stackerNode->detachFromParent();
 }
 
 
