@@ -45,8 +45,8 @@ public:
 	StackerSprite(Stacker *s): stacker(s) {};
 	
 	virtual void update(Layer2D *layer, float tpf){
-		stacker->update(tpf);
 		ComponentSpriteSimple2D::update(layer, tpf);
+		stacker->update(tpf);
 	}
 };
 

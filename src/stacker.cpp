@@ -26,6 +26,8 @@ Stacker::~Stacker(){
 
 
 void Stacker::update(float tpf){
+	if(!armed) return;
+	
 	stackerNode->position += tpf * velocity;
 	if(
 		stackerNode->position.x < -1 ||
@@ -41,7 +43,7 @@ void Stacker::update(float tpf){
 void Stacker::recomputeVelocity(){
 	velocity = -stackerNode->position;
 	velocity.normalize();
-	velocity *= 2; // Change this based on difficulty
+	velocity *= 0.5f; // Change this based on difficulty
 }
 
 
