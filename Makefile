@@ -18,7 +18,7 @@ JVISU_LIB=lib/jvisu/lib/jvisu.a
 
 
 
-$(BIN_FOLDER)/%.o : $(SRC_FOLDER)/%.c*
+$(BIN_FOLDER)/%.o : $(SRC_FOLDER)/%.c* $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
