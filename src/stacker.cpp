@@ -1,9 +1,12 @@
 #include <cstdio>
-#include <jvisu.h>
+#include <ssg.h>
 #include "application.h"
 #include "difficulty.h"
 #include "game.h"
 #include "stacker.h"
+
+using namespace ssg;
+
 
 
 Stacker::Stacker(Game *g):
@@ -118,7 +121,7 @@ void Stacker::arm(){
 void Stacker::disarm(){
 	armed = false;
 	
-	stackerNode->detachFromParent();
+	game->gameNode->detachChild(stackerNode);
 }
 
 

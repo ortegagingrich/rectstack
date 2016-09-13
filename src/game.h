@@ -2,12 +2,14 @@
 #define RS_GAME_H
 
 
-#include <jvisu.h>
+#include <ssg.h>
 
 #include "difficulty.h"
 #include "menu_button.h"
 #include "stack.h"
 #include "stacker.h"
+
+using namespace ssg;
 
 
 class Application;
@@ -40,9 +42,9 @@ class ScoreSprite : public ComponentSpriteText2D {
 public:
 	Game *game;
 	
-	ScoreSprite(JWindow *win, Game *g);
+	ScoreSprite(Window *win, Game *g);
 	
-	virtual void update(Layer2D *layer, float tpf);
+	virtual void onUpdate(Layer2D *layer, float tpf);
 };
 
 
@@ -50,7 +52,7 @@ class GameQuitButton : public MenuButton {
 public:
 	Game *game;
 	
-	GameQuitButton(JWindow *win, Game *g);
+	GameQuitButton(Window *win, Game *g);
 	
 	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
 };

@@ -1,9 +1,11 @@
 #include <sstream>
 #include <string>
-#include <jvisu.h>
+#include <ssg.h>
 #include "application.h"
 #include "menu.h"
 #include "record.h"
+
+using namespace ssg;
 
 
 static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";
@@ -87,7 +89,7 @@ void MainMenu::setup(){
  */
 
 
-MenuButton::MenuButton(JWindow *win, MainMenu *m):
+MenuButton::MenuButton(Window *win, MainMenu *m):
 	ComponentButtonSimple2D(win),
 	menu(m)
 {
@@ -101,7 +103,7 @@ MenuButton::MenuButton(JWindow *win, MainMenu *m):
 
 
 
-StartButton::StartButton(JWindow *win, MainMenu *m, Difficulty diff):
+StartButton::StartButton(Window *win, MainMenu *m, Difficulty diff):
 	MenuButton(win, m),
 	difficulty(diff)
 {
@@ -131,7 +133,7 @@ void StartButton::onLeftClick(MouseButtonEvent *event, float tpf){
 
 
 
-QuitButton::QuitButton(JWindow *win, MainMenu *m):
+QuitButton::QuitButton(Window *win, MainMenu *m):
 	MenuButton(win, m)
 {
 	Texture *background = Texture::createSolidColor(1, 1, win, 0x55, 0x55, 0x55, 0xff);

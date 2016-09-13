@@ -2,7 +2,9 @@
 #define RS_STACKER_H
 
 
-#include <jvisu.h>
+#include <ssg.h>
+
+using namespace ssg;
 
 
 class StackerSprite;
@@ -44,8 +46,7 @@ public:
 	
 	StackerSprite(Stacker *s): stacker(s) {};
 	
-	virtual void update(Layer2D *layer, float tpf){
-		ComponentSpriteSimple2D::update(layer, tpf);
+	virtual void onUpdate(Layer2D *layer, float tpf){
 		stacker->update(tpf);
 	}
 };

@@ -7,9 +7,10 @@
 
 
 #include <string>
-#include <jvisu.h>
+#include <ssg.h>
 #include "difficulty.h"
 
+using namespace ssg;
 
 
 class Game;
@@ -20,7 +21,7 @@ class Application {
 public:
 	
 	
-	JWindow *window;
+	Window *window;
 	
 	
 	static Application *createApplication(bool useHardwareAcceleration);

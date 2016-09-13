@@ -1,12 +1,12 @@
 This is a quick clone of a mobile game called "Stack!" created to demonstrate the
-use of an early alpha build of the jvisu library.
+use of an early alpha build of the SimpleSceneGraph library.
 
 Dependencies:
 	1) libsdl2-dev  2.0.2
 	2) libsdl2-image-dev  2.0.0
 	3) libsdl2-ttf-dev   2.0.12
 
-The pre-alpha build of jvisu is included in this repository.
+The pre-alpha build of SimpleSceneGraph is included in this repository.
 
 To build, run:
 	make build

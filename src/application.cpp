@@ -3,7 +3,7 @@
  */
 
 #include <cstdio>
-#include <jvisu.h>
+#include <ssg.h>
 #include "application.h"
 #include "game.h"
 #include "menu.h"
@@ -24,7 +24,7 @@ Application::Application(bool useHardwareRendering):
 	menu(NULL),
 	rootNode(NULL)
 {
-	window = new JWindow(1280, 720, useHardwareRendering, "RectStack");
+	window = new Window(1280, 720, useHardwareRendering, "RectStack");
 	layer = new Layer2D("Main Layer");
 	window->addLayerTop(layer);
 	rootNode = layer->getRootNode();

@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-Wall -std=c++11 -Ilib/jvisu/include -g
+CFLAGS=-Wall -std=c++11 -Ilib/ssg/include -g
 LINK=g++
 LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf
 
@@ -14,7 +14,7 @@ HEADERS=$(shell find $(SRC_FOLDER) -type f -iname '*.h')
 OBJECTS=$(subst $(SRC_FOLDER),$(BIN_FOLDER),$(subst .c,.o,$(C_SOURCES)))
 OBJECTS+= $(subst $(SRC_FOLDER),$(BIN_FOLDER),$(subst .cpp,.o,$(CPP_SOURCES)))
 
-JVISU_LIB=lib/jvisu/lib/jvisu.a
+SSG_LIB=lib/ssg/lib/ssg.a
 
 
 
@@ -22,7 +22,7 @@ $(BIN_FOLDER)/%.o : $(SRC_FOLDER)/%.c* $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 
-$(EXE): $(OBJECTS) $(JVISU_LIB)
+$(EXE): $(OBJECTS) $(SSG_LIB)
 	$(LINK) $^ $(LFLAGS) -o $@
 
 

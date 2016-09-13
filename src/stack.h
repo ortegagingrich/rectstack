@@ -2,7 +2,9 @@
 #define RS_STACK_H
 
 
-#include <jvisu.h>
+#include <ssg.h>
+
+using namespace ssg;
 
 
 class Game;

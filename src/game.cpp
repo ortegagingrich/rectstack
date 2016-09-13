@@ -1,9 +1,11 @@
 #include <string>
 #include <sstream>
-#include <jvisu.h>
+#include <ssg.h>
 #include "application.h"
 #include "game.h"
 #include "record.h"
+
+using namespace ssg;
 
 
 static std::string FONT_PATH = "assets/font/LiberationSerif-Regular.ttf";
@@ -74,7 +76,7 @@ int Game::getScore(){
  * Score Viewer
  */
 
-ScoreSprite::ScoreSprite(JWindow *win, Game *g):
+ScoreSprite::ScoreSprite(Window *win, Game *g):
 	ComponentSpriteText2D(win),
 	game(g)
 {
@@ -84,7 +86,7 @@ ScoreSprite::ScoreSprite(JWindow *win, Game *g):
 }
 
 
-void ScoreSprite::update(Layer2D *layer, float tpf){
+void ScoreSprite::onUpdate(Layer2D *layer, float tpf){
 	
 	std::stringstream stream;
 	
@@ -94,8 +96,6 @@ void ScoreSprite::update(Layer2D *layer, float tpf){
 	text = stream.str();
 	
 	if(score > record) put_record(score, game->difficulty);
-	
-	ComponentSpriteText2D::update(layer, tpf);
 }
 
 
@@ -104,7 +104,7 @@ void ScoreSprite::update(Layer2D *layer, float tpf){
  * Quit Button
  */
 
-GameQuitButton::GameQuitButton(JWindow *win, Game *g):
+GameQuitButton::GameQuitButton(Window *win, Game *g):
 	MenuButton(win, NULL),
 	game(g)
 {

@@ -1,9 +1,11 @@
 #include <cstdio>
 #include <cstdlib>
-#include <jvisu.h>
+#include <ssg.h>
 #include "application.h"
 #include "game.h"
 #include "stack.h"
+
+using namespace ssg;
 
 
 
@@ -45,7 +47,6 @@ void Stack::addLayerSprite(Uint8 r, Uint8 g, Uint8 b){
 
 void Stack::reset(){
 	node->deleteAllChildren();
-	node->detachFromParent();
 	game->gameNode->attachChild(node);
 	
 	topRect.set(-0.4f, 0.4f, -0.4f, 0.4f);

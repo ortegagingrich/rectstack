@@ -2,9 +2,11 @@
 #define RS_MENU_H
 
 
-#include <jvisu.h>
+#include <ssg.h>
 #include "difficulty.h"
 #include "menu_button.h"
+
+using namespace ssg;
 
 
 class MainMenu {
@@ -31,7 +33,7 @@ private:
 
 class StartButton : public MenuButton {
 public:
-	StartButton(JWindow *win, MainMenu *m, Difficulty diff);
+	StartButton(Window *win, MainMenu *m, Difficulty diff);
 	
 	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
 private:
@@ -42,7 +44,7 @@ private:
 
 class QuitButton : public MenuButton {
 public:
-	QuitButton(JWindow *win, MainMenu *m);
+	QuitButton(Window *win, MainMenu *m);
 	
 	virtual void onLeftClick(MouseButtonEvent *event, float tpf);
 };
